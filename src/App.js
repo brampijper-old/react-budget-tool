@@ -1,22 +1,24 @@
-import React, { Component} from "react";
 import {hot} from "react-hot-loader";
-import { Route, Switch } from 'react-router-dom';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import RapportsCollection from "./components/RapportsCollection";
+import Rapport from "./components/Rapport";
 import "./App.css";
 
 class App extends Component {
   render(){
     return (
+      <Router>
       <main>
+        <Link to="/">
         <h1> Monthly budget overview </h1> 
+        </Link>
         <Switch>
-          <Route path="/" component={RapportsCollection} exact />
-
-          {/* Link id from rapport and navigate to that specific rapport */}
-          {/* <Route path="/" component={RapportsCollection} exact /> */}
-
+          <Route path="/" exact component={RapportsCollection} />
+          <Route path="/rapport/:id" component={Rapport} />
         </Switch>
       </main>
+      </Router>
     )
   }
 }
